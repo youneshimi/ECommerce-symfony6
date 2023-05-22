@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Delete Adresse{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Delete Adresse</h1>
+
+        <form method="post" action="{{ path('app_adresse_delete', {'id': adresse.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ adresse.id) }}">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+
+        <a href="{{ path('app_adresse_index') }}" class="btn btn-secondary">Back to list</a>
+    </div>
+{% endblock %}

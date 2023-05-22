@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 30px;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        th {
+            font-weight: bold;
+            color: #555;
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            background-color: #fff;
+            padding: 10px;
+            color: #333;
+        }
+
+        .btn-secondary {
+            background-color: #888;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #666;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .delete-form input[type="submit"] {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .delete-form input[type="submit"]:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Categorie</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ categorie.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ categorie.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ categorie.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_categorie_index') }}" class="btn btn-secondary">Back to list</a>
+
+        <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-primary">Edit</a>
+
+        {{ include('categorie/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

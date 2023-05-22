@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .table {
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Categorie index</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for categorie in categories %}
+                <tr>
+                    <td>{{ categorie.id }}</td>
+                    <td>{{ categorie.nom }}</td>
+                    <td>{{ categorie.description }}</td>
+                    <td>
+                        <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}" class="btn btn-primary">Show</a>
+                        <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-secondary">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_categorie_new') }}" class="btn btn-success">Create new</a>
+    </div>
+    <!-- Footer créatif -->
+    <div class="footer">
+        <div class="container">
+            <p>&copy; {{ "now"|date("Y") }} Votre entreprise. Tous les droits sont réservés.</p>
+        </div>
+    </div>
+{% endblock %}

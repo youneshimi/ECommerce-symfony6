@@ -1,0 +1,198 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <style>
+        .admin-card {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .admin-card:hover {
+            transform: scale(1.05);
+        }
+
+        .admin-card h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .admin-card p {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .admin-card a {
+            display: inline-block;
+            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .admin-card a.products-btn {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .admin-card a.orders-btn {
+            background-color: #2196f3;
+            color: #fff;
+        }
+
+        .admin-card a.categories-btn {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .admin-card a.clients-btn {
+            background-color: #ff9800;
+            color: #212529;
+        }
+
+        .admin-card a:hover {
+            transform: scale(1.1);
+        }
+
+        .admin-card a:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            opacity: 0;
+            z-index: -1;
+            transition: all 0.3s;
+        }
+
+        .admin-card a:hover:before {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        .admin-card p.empty-message {
+            font-style: italic;
+        }
+
+        .admin-title {
+            font-size: 36px;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fade-in 1s ease-in-out;
+        }
+
+        .admin-background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .admin-background-animation .circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.05);
+            animation: circle-animation 10s linear infinite;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes circle-animation {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="admin-title">Admin Dashboard</h1>
+        <p class="lead">Bienvenue dans l'interface d'administration de la boutique en ligne.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-deck">
+                <div class="card admin-card">
+                    <h2>Produits</h2>
+                    <img src="{{ asset('images/40.png') }}" alt="Produits">
+                    <p>Gérez les produits de la boutique.</p>
+                    <a href="{{ path('app_produit_index') }}" class="btn btn-primary products-btn">Accéder aux produits</a>
+                </div>
+                <div class="card admin-card">
+                    <h2>Commandes</h2>
+                    <img src="{{ asset('images/4.png') }}" alt="Commandes">
+                    <p>Gérez les commandes des clients.</p>
+                    <a href="{{ path('app_commande_index') }}" class="btn btn-primary orders-btn">Accéder aux commandes</a>
+                </div>
+                <div class="card admin-card">
+                    <h2>Catégories</h2>
+                    <img src="{{ asset('images/6.png') }}" alt="Catégories">
+                    <p>Gérez les catégories des produits.</p>
+                    <a href="{{ path('app_categorie_index') }}" class="btn btn-primary categories-btn">Accéder aux catégories</a>
+                </div>
+                <div class="card admin-card">
+                    <h2>Clients</h2>
+                    <img src="{{ asset('images/8.png') }}" alt="Clients">
+                    <p>Gérez les clients de la boutique.</p>
+                    <a href="{{ path('app_client_index') }}" class="btn btn-warning clients-btn">Accéder aux clients</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-4">
+            <div class="admin-card">
+                <h2>Derniers produits ajoutés</h2>
+                <p class="empty-message">Aucun produit disponible</p>
+            </div>
+            <div class="admin-card">
+                <h2>Dernières commandes</h2>
+                <p class="empty-message">Aucune commande disponible</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer mt-auto py-3">
+    <div class="container text-center">
+        <span class="text-muted">© {{ "now"|date("Y") }} Your Company. All rights reserved.</span>
+    </div>
+</footer>
+{% endblock %}

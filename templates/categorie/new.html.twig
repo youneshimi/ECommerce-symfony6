@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Categorie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* Styles pour le formulaire */
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        /* Styles pour les champs de formulaire */
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            box-shadow: none;
+        }
+
+        /* Styles pour le bouton "Back to list" */
+        .btn-secondary {
+            background-color: #888;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .btn-secondary:hover {
+            background-color: #666;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Create new Categorie</h1>
+
+        <div class="form-container">
+            {{ include('categorie/_form.html.twig') }}
+        </div>
+
+        <a href="{{ path('app_categorie_index') }}" class="btn btn-secondary mt-3">Back to list</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Commande{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Ajoutez votre CSS personnalisé ici */
+        .form-wrapper { margin-top: 2em; }
+        .custom-heading { color: #FF0000; font-size: 24px; text-decoration: underline; }
+        .custom-button { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; }
+        .custom-button:hover { background-color: #45a049; }
+        .custom-link { color: #0000FF; text-decoration: none; }
+        .custom-link:hover { text-decoration: underline; }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center custom-heading">Edit Commande</h1>
+
+        <div class="form-wrapper">
+            {{ include('commande/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+
+        <a href="{{ path('app_commande_index') }}" class="btn btn-secondary mt-3 custom-button">Back to List</a>
+
+        {{ include('commande/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

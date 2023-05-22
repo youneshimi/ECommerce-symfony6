@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Adresse{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Edit Adresse</h1>
+
+        {{ include('adresse/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('app_adresse_index') }}" class="btn btn-secondary">Back to list</a>
+
+        {{ include('adresse/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

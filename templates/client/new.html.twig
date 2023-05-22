@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Client{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+
+        /* ... */
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .form-wrapper {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-wrapper h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        .btn-secondary {
+            color: #fff;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Create new Client</h1>
+
+        <div class="form-wrapper">
+            {{ include('client/_form.html.twig') }}
+        </div>
+
+        <a href="{{ path('app_client_index') }}" class="btn btn-secondary mt-3">Back to list</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Commande{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Ajoutez vos styles CSS personnalisés ici */
+        .form-wrapper { margin-top: 2em; }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center">Create new Commande</h1>
+
+        <div class="form-wrapper">
+            {{ include('commande/_form.html.twig') }}
+        </div>
+
+        <a href="{{ path('app_commande_index') }}" class="btn btn-secondary mt-3">Back to List</a>
+    </div>
+{% endblock %}
