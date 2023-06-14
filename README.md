@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://i.imgur.com/b9zsbzn.png" alt="Logo Flutter" width="200px">
+</p>
+
 # Backoffice E-commerce Application
 
 This project is a backoffice e-commerce application that allows administrators of an e-commerce website to manage their daily business operations online. It provides a secure web interface accessible only with specific login credentials. The main features of our backoffice e-commerce application include:
